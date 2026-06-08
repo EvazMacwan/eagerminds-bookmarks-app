@@ -1,9 +1,12 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { BookmarkForm } from "@/components/BookmarkForm";
 import { BookmarkList } from "@/components/BookmarkList";
+import { HandleForm } from "@/components/HandleForm";
 import { signOut } from "@/app/actions/auth";
 import { createBookmark } from "@/app/actions/bookmarks";
+import { setHandle } from "@/app/actions/profile";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function DashboardPage() {
@@ -48,18 +51,30 @@ export default async function DashboardPage() {
 
         <section className="mt-8 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
           <h2 className="text-lg font-medium text-zinc-900">Account</h2>
-          <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
-            <div>
-              <dt className="font-medium text-zinc-500">Email</dt>
-              <dd className="text-zinc-900">{user.email}</dd>
+          <p className="mt-1 text-sm text-zinc-600">{user.email}</p>
+
+          <div className="mt-6 border-t border-zinc-100 pt-6">
+            <h3 className="text-sm font-medium text-zinc-900">Public profile</h3>
+            {profile?.handle ? (
+              <p className="mt-2 text-sm text-zinc-600">
+                Your profile is live at{" "}
+                <Link
+                  href={`/${profile.handle}`}
+                  className="font-medium text-blue-600 hover:underline"
+                  target="_blank"
+                >
+                  /{profile.handle}
+                </Link>
+              </p>
+            ) : (
+              <p className="mt-2 text-sm text-zinc-600">
+                Claim a handle so others can view your public bookmarks.
+              </p>
+            )}
+            <div className="mt-4 max-w-md">
+              <HandleForm action={setHandle} currentHandle={profile?.handle} />
             </div>
-            <div>
-              <dt className="font-medium text-zinc-500">Public handle</dt>
-              <dd className="text-zinc-900">
-                {profile?.handle ? `@${profile.handle}` : "Not set yet"}
-              </dd>
-            </div>
-          </dl>
+          </div>
         </section>
 
         <section className="mt-8 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
