@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BookmarkKHub",
+  title: "BookmarkHub",
   description: "Save bookmarks privately and share a public profile.",
 };
 

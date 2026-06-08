@@ -19,7 +19,7 @@ export default async function Home() {
           Save bookmarks privately, share the ones you choose.
         </h1>
         <p className="mt-4 max-w-xl text-lg text-zinc-600">
-          BookmarkKHub lets you collect links, mark them public or private, and publish a simple
+          BookmarkHub lets you collect links, mark them public or private, and publish a simple
           profile page for the world to see.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">

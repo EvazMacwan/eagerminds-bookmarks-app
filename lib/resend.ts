@@ -17,11 +17,11 @@ export async function sendWelcomeEmail(email: string) {
   const resend = getResend();
 
   const { error } = await resend.emails.send({
-    from: `BookmarkKHub <${from}>`,
+    from: `BookmarkHub <${from}>`,
     to: email,
-    subject: "Welcome to BookmarkKHub",
+    subject: "Welcome to BookmarkHub",
     html: `
-      <h1>Welcome to BookmarkKHub!</h1>
+      <h1>Welcome to BookmarkHub!</h1>
       <p>Thanks for signing up. Confirm your email using the link Supabase sent you, then sign in to start saving bookmarks.</p>
       <p>Once you're in, you can add links, mark them public or private, and share your public profile with others.</p>
     `,
