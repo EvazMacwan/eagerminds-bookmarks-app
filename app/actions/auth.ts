@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { sendWelcomeEmail } from "@/lib/resend";
+import { safeRedirectPath } from "@/lib/safe-redirect";
 import { getSiteUrl } from "@/lib/site-url";
 
 export type AuthActionState = {
@@ -64,8 +65,6 @@ export async function signIn(
 ): Promise<AuthActionState> {
   const email = String(formData.get("email") ?? "").trim();
   const password = String(formData.get("password") ?? "");
-  const next = String(formData.get("next") ?? "/dashboard");
-
   if (!email || !password) {
     return { error: "Email and password are required." };
   }
@@ -77,7 +76,7 @@ export async function signIn(
     return { error: error.message };
   }
 
-  redirect(next.startsWith("/") ? next : "/dashboard");
+  redirect(safeRedirectPath(String(formData.get("next") ?? "")));
 }
 
 export async function signOut() {
