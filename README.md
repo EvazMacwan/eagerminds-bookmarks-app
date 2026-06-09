@@ -88,15 +88,15 @@ Open [http://localhost:3000](http://localhost:3000).
 1. Push your code to GitHub.
 2. Go to [vercel.com/new](https://vercel.com/new) and import the repo.
 3. Add the same environment variables from `.env.example` in **Project Settings → Environment Variables**.
-4. Set `NEXT_PUBLIC_SITE_URL` to your Vercel URL (e.g. `https://bookmarkhub.vercel.app`).
+4. Set `NEXT_PUBLIC_SITE_URL` to your Vercel URL (e.g. `https://eagerminds-bookmarks-app-two.vercel.app/`).
 5. Deploy.
 
 ### After deploying — update Supabase
 
 In **Authentication → URL Configuration**, add your production URLs:
 
-- **Site URL:** `https://eagerminds-bookmarks-b6oxnclis-evaz-s-projects.vercel.app/`
-- **Redirect URLs:** `https://eagerminds-bookmarks-b6oxnclis-evaz-s-projects.vercel.app/**` and `https://eagerminds-bookmarks-b6oxnclis-evaz-s-projects.vercel.app/auth/callback`
+- **Site URL:** `https://eagerminds-bookmarks-app-two.vercel.app/`
+- **Redirect URLs:** `https://eagerminds-bookmarks-app-two.vercel.app/**` and `https://eagerminds-bookmarks-app-two.vercel.app/auth/callback`
 
 ## Where the AI agent got it wrong (and how I fixed it)
 
