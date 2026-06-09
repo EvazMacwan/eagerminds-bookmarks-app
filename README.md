@@ -95,8 +95,8 @@ Open [http://localhost:3000](http://localhost:3000).
 
 In **Authentication → URL Configuration**, add your production URLs:
 
-- **Site URL:** `https://your-app.vercel.app`
-- **Redirect URLs:** `https://your-app.vercel.app/**` and `https://your-app.vercel.app/auth/callback`
+- **Site URL:** `https://eagerminds-bookmarks-b6oxnclis-evaz-s-projects.vercel.app/`
+- **Redirect URLs:** `https://eagerminds-bookmarks-b6oxnclis-evaz-s-projects.vercel.app/**` and `https://eagerminds-bookmarks-b6oxnclis-evaz-s-projects.vercel.app/auth/callback`
 
 ## Where the AI agent got it wrong (and how I fixed it)
 
@@ -104,6 +104,7 @@ The agent initially told me to paste the Supabase **project reference ID** into 
 
 It also missed an **open redirect** in the login flow — `next=//evil.com` passed the `startsWith("/")` check and could send users off-site after a real login. I asked the agent to explain the risk, approved a fix using an allowlisted `safeRedirectPath()` helper, and verified `/login?next=//evil.com` now lands safely on `/dashboard`.
 
+Also, During development, the AI-generated implementation used the older middleware.ts convention. When testing the application, Next.js reported that this convention had been deprecated and recommended using proxy.ts. I investigated the issue, asked the AI agent to explain the warning, applied the required changes, and verified that the application ran correctly afterward.
 ## One thing I'd improve with more time
 
 Add **automated tests** for the security-critical paths — especially RLS policies (user A cannot read user B's private bookmarks) and the redirect allowlist — so regressions are caught in CI before deploy, not manually in the browser.
