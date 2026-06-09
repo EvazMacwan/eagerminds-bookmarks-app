@@ -2,7 +2,7 @@
 
 A small personal bookmarks app — linktree meets pocket. Save links privately, mark some as public, and share them on a simple profile page.
 
-**Live URL:** _(add your Vercel URL after deploying)_
+**Live URL:** https://eagerminds-bookmarks-app-two.vercel.app/
 
 **GitHub:** https://github.com/EvazMacwan/eagerminds-bookmarks-app
 
